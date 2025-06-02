@@ -1,6 +1,10 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller", "sap/m/MessageToast"
-], (Controller,MessageToast) => {
+],
+/**
+* @param {typeof sap.ui.core.mvc.Controller} Controller
+*/ 
+function (Controller,MessageToast) {
     "use strict";
 
     return Controller.extend("com.training.day3exer1gonzales.controller.MainView", {
@@ -59,10 +63,14 @@ sap.ui.define([
       var oInputLNameValue = this.getView().byId("idInptLName").getValue();
 
       // Check if first name is blank
-      if (oInputFNameValue === "" && oInputLNameValue === ""){ 
+      if (oInputFNameValue === "" ){ 
           var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
           var sMsg = oTextBundle.getText("RequiredFieldblank");
           this.fnDisplayMsg(sMsg);
+      } else if (oInputFNameValue === "" && oInputLNameValue === ""){ 
+        var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+        var sMsg = oTextBundle.getText("RequiredFieldblank");
+        this.fnDisplayMsg(sMsg);
       }
   },
 
