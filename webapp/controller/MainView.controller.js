@@ -12,14 +12,32 @@ function (Controller,MessageToast) {
         },
 
     onAddItem: function (){
-      var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
-      var sMsg = oTextBundle.getText("addButtonMsg");
-      this.fnDisplayMsg(sMsg);
+     // var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+     // var sMsg = oTextBundle.getText("addButtonMsg");
+     // this.fnDisplayMsg(sMsg);
+     // Instantiate the fragment
+
+        // create dialog lazily
+        if (!this.oDialog) {
+            // By using loadFragment, we are adding the fragment as a dependent to the View
+            // By doing so, we can use the functions inside the view's controller
+            this.oDialog = this.loadFragment({
+                name: "com.training.day3exer1gonzales.fragment.ProductDialog"
+            });
+        } 
+        this.oDialog.then(function(oDialog) {
+            oDialog.open();
+        });
   },
 
   fnDisplayMsg: function (sMsg){
       MessageToast.show(sMsg);
   },
+  
+  onCloseDialog: function (){
+    this.getView().byId("idProductDialog").close();
+},
+
 
   onChangeMOP: function (oEvent) {
       var sSelectedKey = oEvent.getParameter("selectedItem").getProperty("key");
