@@ -24,45 +24,7 @@
 
                     </f:content>
                 </f:SimpleForm>
- 
-<Table id="idTableSCart" inset="false">
-                    <headerToolbar>
-                        <OverflowToolbar id="idOFT">
-                            <content>
-                                <Title id="idTableTitleSCart" text="{i18n>ShoppingCartlb7}"/>
-                                <ToolbarSpacer id="idTSpacer"/>
-                                <Button id="idBtnAddItems" icon="sap-icon://cart-4" tooltip="{i18n>AddtoCart}" press="onAddItem"/> 
-                            </content>
-                        </OverflowToolbar>
-                    </headerToolbar>
-                    <columns>
-                        <Column id="idCol1">
-                            <Text id="idColText1" text="{i18n>Itemlb8}" />
-                        </Column>
-                        <Column id="idCol2">
-                            <Text id="idColText2" text="{i18n>Quantitylb9}" />
-                        </Column>
-                        <Column id="idCol3">
-                            <Text id="idColText3" text="{i18n>Pricelb10}" />
-                        </Column>
-                    </columns>
-                    <items>
-                        <ColumnListItem id="idColListItem1" vAlign="Middle">
-                            <cells>
-                                <Text id="idText1" text="{i18n>iPhone14ProMaxlb11}" />
-                                <Text id="idText2" text="{i18n>2lb12}" />
-                                <Text id="idText3" text="{i18n>2000lb13}" />
-                            </cells>
-                        </ColumnListItem>
-                        <ColumnListItem id="idColListItem2" vAlign="Middle">
-                            <cells>
-                                <Text id="idText4" text="{i18n>LouisVuittonSpeedylb14}" />
-                                <Text id="idText5" text="{i18n>1lb15}" />
-                                <Text id="idText6" text="{i18n>1400lb16}" />
-                            </cells>
-                        </ColumnListItem>
-                    </items>
-                </Table>
+            <core:Fragment fragmentName="com.training.day3exer1gonzales.fragment.ShoppingCart" type="XML" />
         </VBox>
 <footer>
             <OverflowToolbar id="idOFTFooter">
