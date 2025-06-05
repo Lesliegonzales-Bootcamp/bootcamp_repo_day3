@@ -77,19 +77,40 @@ function (Controller,MessageToast) {
   },
 
   onPressCheckout: function (){
-      var oInputFNameValue = this.getView().byId("idInptFName").getValue();
-      var oInputLNameValue = this.getView().byId("idInptLName").getValue();
+      //var oInputFNameValue = this.getView().byId("idInptFName").getValue();
+      //var oInputLNameValue = this.getView().byId("idInptLName").getValue();
 
       // Check if first name is blank
-      if (oInputFNameValue === "" ){ 
-          var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
-          var sMsg = oTextBundle.getText("RequiredFieldblank");
-          this.fnDisplayMsg(sMsg);
-      } else if (oInputFNameValue === "" && oInputLNameValue === ""){ 
-        var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
-        var sMsg = oTextBundle.getText("RequiredFieldblank");
-        this.fnDisplayMsg(sMsg);
-      }
+     // if (oInputFNameValue === "" ){ 
+     //     var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+     //     var sMsg = oTextBundle.getText("RequiredFieldblank");
+     //     this.fnDisplayMsg(sMsg);
+    //  } else if (oInputFNameValue === "" && oInputLNameValue === ""){ 
+     //   var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+      //  var sMsg = oTextBundle.getText("RequiredFieldblank");
+     //   this.fnDisplayMsg(sMsg);
+    //  }
+    var oInputFName = this.getView().byId("idInptFName");
+    var oInputLName = this.getView().byId("idInptLName");
+    var oInputFNameValue = oInputFName.getValue();
+    var oInputLNameValue = oInputLName.getValue();
+    var oRouter = this.getOwnerComponent().getRouter();
+
+    // Check if first name and last name is blank
+    if (oInputFNameValue === "" || oInputLNameValue === ""){
+       
+// set value state to Error
+        oInputFName.setValueState("Error");
+        oInputLName.setValueState("Error");
+    } else {
+        oInputFName.setValueState("None");
+        oInputLName.setValueState("None");
+
+        //Navigate to review page passing first
+        oRouter.navTo("RouteReviewPage", {
+            firstName: oInputFNameValue
+        });
+    }
   },
 
  });
